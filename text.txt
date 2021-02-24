@@ -1,0 +1,34 @@
+
+«Тайны Смо́лвиля» — американский научно-фантастический телесериал, основанный на комиксах о Супермене и рассказывающий о его юности и становлении супергероем. Этот сериал занимает второе место среди самых длинных американских научно-фантастических сериалов и первое среди основанных на комиксах, в истории телевидения
+
+package input_output;
+
+import java.io.*;
+
+public class InputOutputMain {
+    public static void main(String[] args) {
+        long before = System.currentTimeMillis();
+        File file = new File("text.txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            InputStream inputStream = new FileInputStream(file);
+            byte[] array = new byte[8192];
+            int count = inputStream.read(array);
+            StringBuilder stringBuilder = new StringBuilder();
+            while (count > 0) {
+                stringBuilder.append(new String(array));
+                count = inputStream.read(array);
+            }
+            System.out.println(stringBuilder.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        long after = System.currentTimeMillis();
+        System.out.println(after - before);
+
+    }
+}
