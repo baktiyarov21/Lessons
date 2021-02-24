@@ -19,6 +19,7 @@ public class InputOutputMain {
         }
         long after = System.currentTimeMillis();
         System.out.println(after - before);
+        int a = 0;
 
     }
 }
